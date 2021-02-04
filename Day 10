@@ -1,0 +1,36 @@
+class Solution 
+{ 
+	static int repeatedStringMatch(String A, String B) 
+	{ 
+        int count = 0;
+        boolean b = true;
+	    if(A.contains(B))
+		    return 1;
+		else{
+		    
+		    
+		    for(int i = 0;i<B.length();i++){
+		        if(!A.contains(Character.toString(B.charAt(i)))){
+		            b = false;
+		            break;
+		        }
+		    }
+		    if(!b)
+		    return -1;
+		    b = false;
+		    StringBuffer sA = new StringBuffer(A);
+		    while(count<=(B.length()/A.length())+1){
+		        count++;
+		        sA.append(A);
+		        if(sA.substring(0).contains(B)){
+		            count++;
+		            b = true;
+		            break;
+		        }
+		    }
+		}
+		if(count==0 || b ==false)
+		  count =-1;
+		return count;
+	} 
+} 
